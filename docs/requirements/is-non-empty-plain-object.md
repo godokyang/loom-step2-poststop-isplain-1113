@@ -17,6 +17,8 @@ work_items:
     completion: d.ts 增加与 isPlainObject 同形式的 type guard 声明
     effort: 0.2
     depends_on: []
+    status: done
+    self_check: 'is-plain-object.d.ts 新增 export function isNonEmptyPlainObject(value: unknown): value is Record<PropertyKey, unknown>，与 isPlainObject 同为 type guard 形式；原声明未改动。'
   - id: tests
     title: 新增测试用例
     deliverable: test.js
