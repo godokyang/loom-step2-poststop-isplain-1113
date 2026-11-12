@@ -25,6 +25,8 @@ work_items:
     completion: test.js 覆盖 {a:1}/{}、Object.create(null) 正反例、symbol 键、数组/函数/null/Date/Foo 反例
     effort: 0.3
     depends_on: []
+    status: done
+    self_check: test.js 引入 isNonEmptyPlainObject 并新增用例：{a:1}/{foo:'bar'} 为 true、{} 与空 Object.create(null) 为 false、Object.create(null) 带自有键为 true、仅 symbol 键对象为 false、数组/[]/函数/null/new Date()/new Foo() 为 false；原有 isPlainObject 用例全部保持不变，npm test 通过。
   - id: readme
     title: README 用法示例
     deliverable: README.md
