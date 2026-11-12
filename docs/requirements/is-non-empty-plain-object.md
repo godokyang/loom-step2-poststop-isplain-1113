@@ -9,6 +9,8 @@ work_items:
     completion: is-plain-object.js 新增命名导出，现有导出与行为不变
     effort: 0.3
     depends_on: []
+    status: done
+    self_check: is-plain-object.js 新增命名导出 isNonEmptyPlainObject(o)：isPlainObject(o) 为真且 Object.keys(o).length > 0 时返回 true；现有 isPlainObject 函数体与导出未改动；ESM 冒烟验证行为正确（{a:1}=true、{}=false）。
   - id: types
     title: 补充类型声明
     deliverable: is-plain-object.d.ts
