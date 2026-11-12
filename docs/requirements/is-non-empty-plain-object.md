@@ -33,6 +33,8 @@ work_items:
     completion: README 增加 API 段落与用法示例
     effort: 0.2
     depends_on: []
+    status: done
+    self_check: README.md 新增 isNonEmptyPlainObject 导入示例、API 段落与正反例代码块；现有 isPlainObject 文档保持不变。
   - id: verify
     title: 构建与测试自检
     deliverable: dist/is-plain-object.js、dist/is-plain-object.mjs 与 npm test 结果
