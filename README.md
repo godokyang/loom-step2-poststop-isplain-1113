@@ -22,6 +22,7 @@ With ES modules:
 
 ```js
 import { isPlainObject } from 'is-plain-object';
+import { isNonEmptyPlainObject } from 'is-plain-object';
 
 isPlainObject({});                        // true
 isPlainObject({ foo: 'bar' });            // true
@@ -47,6 +48,22 @@ const { isPlainObject } = require('is-plain-object');
 ### `isPlainObject(value)`
 
 Returns `true` when `value` is a plain object. Objects created by the `Object` constructor and objects with a `null` prototype are considered plain.
+
+### `isNonEmptyPlainObject(value)`
+
+Returns `true` when `value` is a plain object **and** it has at least one own enumerable string key (`Object.keys(value).length > 0`).
+
+```js
+isNonEmptyPlainObject({ foo: 'bar' });    // true
+isNonEmptyPlainObject(Object.assign(Object.create(null), { foo: 'bar' })); // true
+
+isNonEmptyPlainObject({});                // false
+isNonEmptyPlainObject(Object.create(null)); // false
+isNonEmptyPlainObject(null);              // false
+isNonEmptyPlainObject([]);                // false
+isNonEmptyPlainObject(new Date());        // false
+isNonEmptyPlainObject(() => {});          // false
+```
 
 ## Development
 

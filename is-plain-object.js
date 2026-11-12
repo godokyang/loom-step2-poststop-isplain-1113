@@ -30,3 +30,7 @@ export function isPlainObject(o) {
   // Most likely a plain Object
   return true;
 };
+
+export function isNonEmptyPlainObject(o) {
+  return isPlainObject(o) && Object.keys(o).length > 0;
+};

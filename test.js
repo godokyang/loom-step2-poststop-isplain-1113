@@ -9,6 +9,7 @@
 
 var assert = require('assert');
 var isPlainObject = require('./dist/is-plain-object.js').isPlainObject;
+var isNonEmptyPlainObject = require('./dist/is-plain-object.js').isNonEmptyPlainObject;
 
 function Foo() {
   this.abc = {};
@@ -27,3 +28,21 @@ assert(!isPlainObject(['foo', 'bar']));
 assert(!isPlainObject([]));
 assert(!isPlainObject(new Foo()));
 assert(!isPlainObject(null));
+
+var sym = Symbol('foo');
+var symbolOnly = {};
+symbolOnly[sym] = 'bar';
+
+assert(isNonEmptyPlainObject({ a: 1 }));
+assert(isNonEmptyPlainObject({ foo: 'bar' }));
+assert(isNonEmptyPlainObject(Object.assign(Object.create(null), { foo: 'bar' })));
+
+assert(!isNonEmptyPlainObject({}));
+assert(!isNonEmptyPlainObject(Object.create(null)));
+assert(!isNonEmptyPlainObject(symbolOnly));
+assert(!isNonEmptyPlainObject(['foo', 'bar']));
+assert(!isNonEmptyPlainObject([]));
+assert(!isNonEmptyPlainObject(function() {}));
+assert(!isNonEmptyPlainObject(null));
+assert(!isNonEmptyPlainObject(new Date()));
+assert(!isNonEmptyPlainObject(new Foo()));

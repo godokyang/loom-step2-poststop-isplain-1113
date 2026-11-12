@@ -33,6 +33,8 @@ work_items:
     completion: npm install、npm run build、npm test 全部通过，版本仍 5.1.0
     effort: 0.3
     depends_on: []
+    status: done
+    self_check: is-plain-object.js 新增命名导出 isNonEmptyPlainObject（isPlainObject 为真且 Object.keys 长度>0），现有 isPlainObject 行为与导出未改；is-plain-object.d.ts 增加同形式 type guard；test.js 覆盖 {a:1}/{}、Object.create(null) 正反例、symbol-only、数组/函数/null/Date/Foo 反例且原有用例未改；README 增加 API 与示例。npm install --cache /tmp/.npm-cache-loom（默认缓存 root 属主报 EPERM，属环境问题，改用临时缓存成功）、npm run build 生成 dist CJS/ESM、npm test 通过（exit 0）；另用 node ESM 冒烟验证导出行为正确。版本保持 5.1.0，未改 package.json 依赖。
 ---
 # 新增 isNonEmptyPlainObject 命名导出
 
