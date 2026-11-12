@@ -2,8 +2,38 @@
 loom_kind: requirement
 id: 4c8a5d31-9e2f-4b07-a6c3-7d15e8b2f904
 title: 新增 isNonEmptyPlainObject 命名导出
+work_items:
+  - id: impl
+    title: 实现 isNonEmptyPlainObject 命名导出
+    deliverable: is-plain-object.js
+    completion: is-plain-object.js 新增命名导出，现有导出与行为不变
+    effort: 0.3
+    depends_on: []
+  - id: types
+    title: 补充类型声明
+    deliverable: is-plain-object.d.ts
+    completion: d.ts 增加与 isPlainObject 同形式的 type guard 声明
+    effort: 0.2
+    depends_on: []
+  - id: tests
+    title: 新增测试用例
+    deliverable: test.js
+    completion: test.js 覆盖 {a:1}/{}、Object.create(null) 正反例、symbol 键、数组/函数/null/Date/Foo 反例
+    effort: 0.3
+    depends_on: []
+  - id: readme
+    title: README 用法示例
+    deliverable: README.md
+    completion: README 增加 API 段落与用法示例
+    effort: 0.2
+    depends_on: []
+  - id: verify
+    title: 构建与测试自检
+    deliverable: dist/is-plain-object.js、dist/is-plain-object.mjs 与 npm test 结果
+    completion: npm install、npm run build、npm test 全部通过，版本仍 5.1.0
+    effort: 0.3
+    depends_on: []
 ---
-
 # 新增 isNonEmptyPlainObject 命名导出
 
 ## 目标
